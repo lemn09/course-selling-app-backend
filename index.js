@@ -1,36 +1,35 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const adminRouter = require('./routes/adminRouter.js');
-const userRouter = require('./routes/userRouter.js');
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const adminRouter = require("./routes/adminRouter.js");
+const userRouter = require("./routes/userRouter.js");
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-const url = 'mongodb://localhost:27017/course-website';
+// const url = 'mongodb://localhost:27017/course-website';
+const url =
+  "mongodb+srv://monishnayak0987:aiATdni01@cluster1.taulvha.mongodb.net/";
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  family: 4 // Use IPv4, skip trying IPv6
-}
+};
 
 // connect mongoose
 mongoose
   .connect(url, options)
   .then(() => {
-    console.log('connection success');
+    console.log("connection success");
   })
-  .catch((err) =>
-    console.log('error : ' + err)
-  )
+  .catch((err) => console.log("error : " + err));
 
-app.use('/admin', adminRouter);
-app.use('/users', userRouter);
+app.use("/admin", adminRouter);
+app.use("/users", userRouter);
 
 app.listen(3000, () => {
-  console.log('Server is listening on port 3000');
+  console.log("Server is listening on port 3000");
 });
 
 // let ADMINS = [];
@@ -234,4 +233,3 @@ app.listen(3000, () => {
 //     res.status(403).json({ message: 'User not found' });
 //   }
 // });
-
