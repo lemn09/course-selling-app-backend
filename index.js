@@ -36,6 +36,8 @@ const connectDB = async () => {
   }
 };
 
+connectDB();
+
 app.use("/admin", adminRouter);
 app.use("/users", userRouter);
 
