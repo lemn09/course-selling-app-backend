@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const adminRouter = require("./routes/adminRouter.js");
 const userRouter = require("./routes/userRouter.js");
+require("dotenv").config();
 
 const app = express();
 
@@ -10,8 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 // const url = 'mongodb://localhost:27017/course-website';
-const url =
-  "mongodb+srv://monishnayak0987:aiATdni01@cluster1.taulvha.mongodb.net/";
+const url = process.env.DB_STRING;
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
