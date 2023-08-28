@@ -12,6 +12,7 @@ app.use(cors());
 
 // const url = 'mongodb://localhost:27017/course-website';
 const url = process.env.DB_STRING;
+console.log(DB_STRING);
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -21,7 +22,7 @@ const options = {
 mongoose
   .connect(url, options)
   .then(() => {
-    console.log("connection success");
+    console.log("mongodb connection success");
   })
   .catch((err) => console.log("error : " + err));
 
