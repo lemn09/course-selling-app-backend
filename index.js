@@ -19,12 +19,22 @@ const options = {
 };
 
 // connect mongoose
-mongoose
-  .connect(url, options)
-  .then(() => {
-    console.log("mongodb connection success");
-  })
-  .catch((err) => console.log("error : " + err));
+// mongoose
+//   .connect(url, options)
+//   .then(() => {
+//     console.log("mongodb connection success");
+//   })
+//   .catch((err) => console.log("error : " + err));
+
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(url, options);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
 
 app.use("/admin", adminRouter);
 app.use("/users", userRouter);
